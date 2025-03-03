@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roller API Test</title>
+</head>
+<body>
+    <h1>Test Dice Roller API</h1>
+    <button id="rollDice">Roll Dice</button>
+    <p id="result">Click to roll...</p>
+
+    <script>
+        document.getElementById("rollDice").addEventListener("click", async () => {
+            try {
+                let response = await fetch("https://YOUR_APP_NAME.azurewebsites.net/roll-dice");
+                let data = await response.json();
+                document.getElementById("result").textContent = "Rolled: " + data.roll;
+            } catch (error) {
+                document.getElementById("result").textContent = "Error calling API";
+            }
+        });
+    </script>
+</body>
+</html>
